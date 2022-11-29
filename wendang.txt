@@ -1,0 +1,42 @@
+ cd backend
+ npm init -y
+ npm i express mysql nodemon
+ 
+
+ "type": "module", 让文件可以外部导包  node index.js
+ "start": "nodemon index.js" 让文件动态刷新 搭配npm start 加上这一行就不用上面的node index.js了
+
+ backend 安装的差不多了进client
+ cd client
+ npx create-react-app . 
+ npm start
+
+npm install react-router-dom 
+client 一定要安装这个 这个是让react页面之间跳来跳去的
+
+ client 内部调包 所有的包都要写在src 下面
+ 
+ PS C:\Users\23584\Desktop\mysql-react\client> npm i axios
+ 前后端交互 前端想看后端的数据库 要在前端安装
+
+
+const [books,setBooks] = useState([])
+
+  useEffect(()=>{
+    const fetchAllBooks = async()=>{
+      try {
+        const res = await axios.get("http://localhost:8000/books")//这里是你要输入的链接
+        console.log(res)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchAllBooks()
+  },[])
+
+
+  PS C:\Users\23584\Desktop\mysql-react\backend> npm i cors
+  前端写完这些 要在后端对应安装
+
+  import cors from "cors" 手写
+  后端index.js  添加app.use(cors())
